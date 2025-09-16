@@ -1,0 +1,51 @@
+:root {
+  --bg:#f7f7f9;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --board:#e6b45b;
+  --line:#6a4b2a;
+}
+
+* { box-sizing: border-box; }
+body {
+  font-family: "Noto Sans KR", Arial, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: #222;
+}
+.wrap { max-width: 980px; margin: 28px auto; padding: 20px; }
+header { display: flex; gap: 18px; align-items: center; }
+h1 { font-size: 20px; margin: 0; }
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(20,20,30,0.06);
+  padding: 18px;
+}
+.controls { display: flex; gap: 12px; align-items: center; margin-top: 12px; }
+button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 0;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+button.ghost { background: transparent; border: 1px solid #ddd; color: #111; }
+.status { margin-left: auto; color: var(--muted); font-weight: 600; }
+
+.board-wrap { display: flex; gap: 18px; align-items: flex-start; margin-top: 18px; }
+.canvas-card { padding: 12px; border-radius: 12px; background: #fff; }
+canvas { display: block; border-radius: 8px; background: linear-gradient(#f7e7b8,#f1d79a); }
+.side { width: 220px; }
+.legend { font-size: 13px; color: var(--muted); margin-top: 6px; }
+.btns { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.small { font-size: 13px; padding: 6px 8px; }
+.muted { color: var(--muted); font-size: 13px; }
+
+@media(max-width:880px){
+  .board-wrap{flex-direction:column;align-items:center}
+  .side{width:100%}
+}

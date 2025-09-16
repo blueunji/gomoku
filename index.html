@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>웹 오목 (Gomoku)</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script>
+        // Firebase 프로젝트 설정 정보로 교체하세요.
+        const firebaseConfig = {
+            apiKey: "AIzaSyDsZHAo2oR1jvJKVu6rOIzO2Grl0q8OREE",
+            authDomain: "gomoku-8edbd.firebaseapp.com",
+            projectId: "gomoku-8edbd",
+            storageBucket: "gomoku-8edbd.firebasestorage.app",
+            messagingSenderId: "111285727144",
+            appId: "1:111285727144:web:5a9e9b5be1e2d7eaccb79d"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = app.database();
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <h1>웹 오목 — 간단한 오목 게임</h1>
+            <div class="status muted">턴: <strong id="turnText">Black</strong></div>
+        </header>
+
+        <div class="card">
+            <div class="controls">
+                <div style="font-weight:700">보드 크기</div>
+                <select id="sizeSelect">
+                    <option value="15">15 x 15 (기본)</option>
+                    <option value="13">13 x 13</option>
+                    <option value="19">19 x 19</option>
+                </select>
+
+                <button id="createRoomBtn" class="small">방 만들기</button>
+                
+                <div style="margin-top:12px; font-weight:700">친구와 함께하기</div>
+                <input type="text" id="roomIdInput" placeholder="방 ID 입력">
+                <button id="joinRoomBtn" class="small">참여하기</button>
+                
+                <button id="undoBtn" class="small ghost">한 수 취소</button>
+                <button id="restartBtn" class="small">새 게임</button>
+                <div class="status" id="message"></div>
+                <div class="status" id="roomInfo"></div>
+            </div>
+
+            <div class="board-wrap">
+                <div class="canvas-card">
+                    <canvas id="boardCanvas" width="760" height="760"></canvas>
+                </div>
+                <aside class="side">
+                    <div style="font-weight:700">정보</div>
+                    <div class="legend">현재 플레이어: <span id="currentPlayerText">Black (●)</span></div>
+                    <div class="legend" style="margin-top:8px">규칙: 먼저 연속 5목을 만든 쪽이 승리합니다.</div>
+                    <div class="btns">
+                        <button id="toggleCoords" class="ghost small">좌표 토글</button>
+                    </div>
+                    <div style="margin-top:12px" class="muted">보드 크기 변경은 새 게임 필요합니다.</div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
